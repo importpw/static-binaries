@@ -1,0 +1,28 @@
+diff --git a/Makefile b/Makefile
+index e91f1f6..224fb4b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -18,7 +18,7 @@
+ 
+ prefix = /usr
+ 
+-CC=gcc
++#CC=gcc
+ 
+ VERSION=1.7.0
+ TREE_DEST=tree
+@@ -54,10 +54,10 @@ CFLAGS=-ggdb -Wall -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
+ 
+ # Uncomment for OS X:
+ #CC=cc
+-#CFLAGS=-O2 -Wall -fomit-frame-pointer -no-cpp-precomp
+-#LDFLAGS=
+-#MANDIR=/usr/share/man/man1
+-#OBJS+=strverscmp.o
++CFLAGS=-O2 -Wall -fomit-frame-pointer -no-cpp-precomp
++LDFLAGS=
++MANDIR=/usr/share/man/man1
++OBJS+=strverscmp.o
+ 
+ # Uncomment for HP/UX:
+ #CC=cc
