@@ -1,5 +1,9 @@
 import "os@0.0.1"
 
+if [ -z "${IMPORT_CACHE-}" ]; then
+  IMPORT_CACHE="$HOME/.import-cache"
+fi
+
 mkdir -p "$IMPORT_CACHE/bin"
 export PATH="$IMPORT_CACHE/bin:$PATH"
 
