@@ -1,4 +1,4 @@
-import "os@0.0.1"
+import "os@0.0.2"
 
 if [ -z "${IMPORT_CACHE-}" ]; then
   IMPORT_CACHE="$HOME/.import-cache"
