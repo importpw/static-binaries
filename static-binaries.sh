@@ -12,12 +12,12 @@ static_binaries() {
   path="$(print=1 import "./binaries/$(os_platform)/$(os_arch)/$1")"
   if [ ! -x "$path" ]; then
     [ -n "${IMPORT_DEBUG-}" ] && printf "static-binaries: " >&2
-    chmod ${IMPORT_DEBUG+-v} +x "$path" >&2
+    chmod ${IMPORT_DEBUG:+-v} +x "$path" >&2
   fi
 
   local bin="$IMPORT_CACHE/bin/$1"
   if [ ! -e "$bin" ]; then
     [ -n "${IMPORT_DEBUG-}" ] && printf "static-binaries: creating symlink " >&2
-    ln -fs${IMPORT_DEBUG+v} "..${path:${#IMPORT_CACHE}}" "$bin" >&2
+    ln -fs${IMPORT_DEBUG:+v} "..${path:${#IMPORT_CACHE}}" "$bin" >&2
   fi
 }
