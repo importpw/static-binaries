@@ -8,8 +8,14 @@ mkdir -p "$IMPORT_CACHE/bin"
 export PATH="$IMPORT_CACHE/bin:$PATH"
 
 static_binaries() {
-  local bin
-  bin="$(print=1 import "./binaries/$(os_platform)/$(os_arch)/$1")"
-  chmod +x "$bin"
-  ln -sfv "..${bin:${#IMPORT_CACHE}}" "$IMPORT_CACHE/bin/$1"
+  local path
+  path="$(print=1 import "./binaries/$(os_platform)/$(os_arch)/$1")"
+  if [ ! -x "$path" ]; then
+    chmod ${IMPORT_DEBUG+-v} +x "$path"
+  fi
+
+  local bin="$IMPORT_CACHE/bin/$1"
+  if [ ! -e "$bin" ]; then
+    ln -fs${IMPORT_DEBUG+v} "..${bin:${#IMPORT_CACHE}}" "$bin"
+  fi
 }
