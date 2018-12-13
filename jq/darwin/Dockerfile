@@ -14,3 +14,4 @@ RUN ./configure \
   --build=i686 \
   --host=x86_64-apple-darwin
 RUN OSXCROSS_NO_INCLUDE_PATH_WARNINGS=1 make
+RUN x86_64-apple-darwin12-strip jq
