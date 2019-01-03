@@ -2,9 +2,21 @@
 
 This repo contains a bunch of statically-linked binaries of various tools,
 along with the Dockerfiles / other build scripts that can be used to build
-them.  I generally just create these as I need them - not all tools are
-available for every platform or architecture.  Please [file an issue][1]
-if you want a new tool or a tool on a new platform.
+them.
+
+This repo is compatible with [`import`](https://import.pw), so that you can
+easily load static binaries that your script depends on.
+
+## Example
+
+```bash
+#!/usr/bin/env import
+import "static-binaries@0.0.8"
+static_binaries jq
+
+which jq
+jq -V
+```
 
 ## Current List of Tools
 
