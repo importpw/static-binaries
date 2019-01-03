@@ -1,4 +1,6 @@
+echo "$__import_location"
 import "os@0.1.0"
+echo "$__import_location"
 
 static_binaries() {
   local path
