@@ -1,6 +1,5 @@
-echo "$__import_location"
+__static_binaries_location="$(dirname "$__import_location")"
 import "os@0.1.0"
-echo "$__import_location"
 
 static_binaries() {
   local path
@@ -8,7 +7,7 @@ static_binaries() {
   mkdir -p "$cache/bin"
   os_path_unshift "$cache/bin"
 
-  path="$(print=1 import "./binaries/$(os_platform)/$(os_arch)/$1")"
+  path="$(print=1 import "$__static_binaries_location/binaries/$(os_platform)/$(os_arch)/$1")"
   if [ ! -x "$path" ]; then
     [ -n "${IMPORT_DEBUG-}" ] && printf "static-binaries: " >&2
     chmod ${IMPORT_DEBUG:+-v} +x "$path" >&2
