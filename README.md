@@ -50,7 +50,7 @@ docker run -v `pwd`/../binaries:/output static-binaries-FOO
 ### nmap
 
 - In order to do script scans, Nmap must know where the various Lua files live.
-  You can do this by setting the `NMAPDIR` environment variable:  
+  You can do this by setting the `NMAPDIR` environment variable:
     `NMAPDIR=/usr/share/nmap nmap -vvv -A www.target.com`
 
 - The `nmap_centos5` binary isn't statically-linked; rather, it's built on
@@ -69,7 +69,7 @@ docker run -v `pwd`/../binaries:/output static-binaries-FOO
 
 - Getting a static build of Python that works is **HARD**.  Not everything in this
   particular tool functions properly, and you have to run it with some strange options,
-  but it's usable.  In short, you need to run it like so:  
+  but it's usable.  In short, you need to run it like so:
     `PYTHONPATH=/path/to/python2.7.zip python -sS`
 
 - Note: sqlite isn't currently supported.  Adding this is an ongoing TODO of mine.
@@ -81,7 +81,7 @@ docker run -v `pwd`/../binaries:/output static-binaries-FOO
   the `TERMINFO` environment variable to specify the correct location:
   `TERMINFO=/lib/terminfo ./ht`
 
-## file
+### file
 
 - You need to pass the correct magic database to file - one is provided named
   `magic.mgc`.  Run `file` as such: `file -m /path/to/magic.mgc myfile.foo`.
