@@ -11,7 +11,7 @@ easily load static binaries that your script depends on.
 
 ```bash
 #!/usr/bin/env import
-import "static-binaries@0.0.8"
+import "static-binaries@1.0.0"
 static_binaries jq
 
 which jq
