@@ -1,5 +1,3 @@
-name: tree
-
 on:
   push:
     branches:
