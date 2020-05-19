@@ -20,7 +20,7 @@ jobs:
       run: docker build --tag build dockerfiles/tree/${{ matrix.os }}
 
     - name: Copy `tree` to host
-      run: docker run --rm -v "$(pwd)":out build cp -v tree /out
+      run: docker run --rm -v "$(pwd)":/out build cp -v tree /out
 
     - uses: actions/upload-artifact@v2
       with:
