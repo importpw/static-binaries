@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
 
   build:
-    name: Build `tree`
+    name: tree
 
     strategy:
       matrix:
@@ -20,7 +20,7 @@ jobs:
       run: docker build --tag build dockerfiles/tree/${{ matrix.os }}
 
     - name: Copy `tree` to host
-      run: docker run --rm build ls -l
+      run: docker run --rm build ls -l /github
 
     - uses: actions/upload-artifact@v2
       with:
