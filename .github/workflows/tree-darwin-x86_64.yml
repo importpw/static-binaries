@@ -15,11 +15,7 @@ jobs:
       run: docker build --tag build dockerfiles/tree/darwin
 
     - name: Copy `tree` to host
-      run: docker run --rm build -- ./copy.sh
-
-    - run: mkdir -p path/to/artifact
-
-    - run: echo hello > path/to/artifact/world.txt
+      run: docker run --rm build ls -l
 
     - uses: actions/upload-artifact@v2
       with:
