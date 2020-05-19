@@ -12,8 +12,6 @@ on:
 jobs:
 
   build:
-    name: jq
-
     strategy:
       matrix:
         os: [darwin/x86_64, linux/x86_64]
