@@ -1,3 +1,5 @@
+name: hexdump
+
 on:
   push:
     branches:
