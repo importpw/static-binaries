@@ -1,0 +1,33 @@
+name: jq
+
+on:
+  push:
+    branches:
+    - master
+    tags:
+    - '!*'
+  pull_request:
+
+
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        os: [darwin/x86_64, linux/x86_64]
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build the Docker image
+      run: docker build --tag build dockerfiles/jq/${{ matrix.os }}
+
+    - name: Copy `jq` to host
+      run: docker run --rm -v "$(pwd)"/out:/out build cp -v jq /out
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: jq
+        path: out/*

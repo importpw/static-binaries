@@ -1,0 +1,33 @@
+name: hexdump
+
+on:
+  push:
+    branches:
+    - master
+    tags:
+    - '!*'
+  pull_request:
+
+
+jobs:
+
+  build:
+    strategy:
+      matrix:
+        os: [darwin/x86_64]
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build the Docker image
+      run: docker build --tag build dockerfiles/hexdump/${{ matrix.os }}
+
+    - name: Copy `hexdump` to host
+      run: docker run --rm -v "$(pwd)"/out:/out build cp -v hexdump /out
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: hexdump
+        path: out/*
